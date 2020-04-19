@@ -13,7 +13,7 @@ namespace ClassLib
 
         private readonly int DeathAge;
 
-        public DynamicSwrSimulation(List<double> historicalReturns, int startingAge, int deathAge)
+        public DynamicSwrSimulation(IEnumerable<double> historicalReturns, int startingAge, int deathAge)
             : base(historicalReturns)
         {
             StartingAge = startingAge;

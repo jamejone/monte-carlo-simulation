@@ -1,8 +1,5 @@
 ﻿using ClassLib;
-using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Console
 {
@@ -10,8 +7,11 @@ namespace Console
     {
         static void Main(string[] args)
         {
-            var comparisonSim = new ComparisonSim();
-            comparisonSim.Run();
+            //var comparisonSim = new ComparisonSim();
+            //comparisonSim.Run();
+
+            var dynamicSwrMonteCarlo = new DynamicSwrMonteCarlo();
+            dynamicSwrMonteCarlo.Run();
         }
     }
 }

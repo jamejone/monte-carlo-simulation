@@ -5,7 +5,7 @@ namespace ClassLib
 {
     public abstract class Simulation
     {
-        private List<double> HistoricalReturns { get; set; } = new List<double>();
+        private IEnumerable<double> HistoricalReturns { get; set; } = new List<double>();
 
         public List<double> HistoricalAccountBalance { get; protected set; } = new List<double>();
         
@@ -13,7 +13,7 @@ namespace ClassLib
 
         protected int CurrentYear;
 
-        public Simulation(List<double> historicalReturns)
+        public Simulation(IEnumerable<double> historicalReturns)
         {
             HistoricalReturns = historicalReturns;
         }
@@ -22,7 +22,7 @@ namespace ClassLib
         {
             HistoricalAccountBalance.Add(currentSavings);
 
-            for (CurrentYear = 0; CurrentYear < HistoricalReturns.Count; CurrentYear++)
+            foreach (var currentYearReturn in HistoricalReturns)
             {
                 var payment = CalculatePayment();
 
@@ -30,9 +30,11 @@ namespace ClassLib
 
                 currentSavings -= payment;
 
-                currentSavings *= (1 + HistoricalReturns[CurrentYear]);
+                currentSavings *= (1 + currentYearReturn);
 
                 HistoricalAccountBalance.Add(currentSavings);
+
+                CurrentYear++;
             }
         }
 
