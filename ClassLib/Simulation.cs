@@ -5,13 +5,18 @@ namespace ClassLib
 {
     public abstract class Simulation
     {
-        public List<double> HistoricalReturns { get; set; } = new List<double>();
+        private List<double> HistoricalReturns { get; set; } = new List<double>();
 
-        public List<double> HistoricalAccountBalance { get; set; } = new List<double>();
+        public List<double> HistoricalAccountBalance { get; protected set; } = new List<double>();
         
-        public List<double> HistoricalWithdrawalAmount { get; set; } = new List<double>();
+        public List<double> HistoricalWithdrawalAmount { get; protected set; } = new List<double>();
 
-        public int CurrentYear { get; set; }
+        protected int CurrentYear;
+
+        public Simulation(List<double> historicalReturns)
+        {
+            HistoricalReturns = historicalReturns;
+        }
 
         public void RunSimulation(double currentSavings)
         {

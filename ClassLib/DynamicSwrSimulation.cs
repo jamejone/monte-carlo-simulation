@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace ClassLib
 {
@@ -12,7 +13,8 @@ namespace ClassLib
 
         private readonly int DeathAge;
 
-        public DynamicSwrSimulation(int startingAge, int deathAge)
+        public DynamicSwrSimulation(List<double> historicalReturns, int startingAge, int deathAge)
+            : base(historicalReturns)
         {
             StartingAge = startingAge;
             DeathAge = deathAge;

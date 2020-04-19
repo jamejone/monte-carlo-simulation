@@ -3,17 +3,19 @@ using System.Collections.Generic;
 
 namespace ClassLib
 {
-    public class FourPercentSimulation : Simulation
+    public class StaticSwrSimulation : Simulation
     {
-        public const double WithdrawalRate = 0.04;
+        private readonly double WithdrawalRate;
 
         public double FirstPayment { get; set; }
 
         private List<double> HistoricalCpi { get; set; }
 
-        public FourPercentSimulation(List<double> historicalCpi)
+        public StaticSwrSimulation(List<double> historicalReturns, List<double> historicalCpi, double withdrawalRate)
+            : base(historicalReturns)
         {
             HistoricalCpi = historicalCpi;
+            WithdrawalRate = withdrawalRate;
         }
 
         public override double CalculatePayment()

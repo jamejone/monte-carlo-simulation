@@ -12,10 +12,10 @@ namespace Test
         public void FourPercentSimulationTest()
         {
             var historicalCpi = new List<double>() { 1, 1.02 };
+            var historicalReturns = new List<double>() { .06, -.06 };
 
-            var sim = new FourPercentSimulation(historicalCpi);
+            var sim = new StaticSwrSimulation(historicalReturns, historicalCpi, 0.04);
             
-            sim.HistoricalReturns = new List<double>() { .06, -.06 };
             sim.RunSimulation(100);
 
             Assert.AreEqual(91.8192, sim.HistoricalAccountBalance.Last(), 0.001);
