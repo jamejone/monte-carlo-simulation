@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ClassLib
 {
@@ -11,10 +12,10 @@ namespace ClassLib
 
         private List<double> HistoricalCpi { get; set; }
 
-        public StaticSwrSimulation(List<double> historicalReturns, List<double> historicalCpi, double withdrawalRate)
+        public StaticSwrSimulation(IEnumerable<double> historicalReturns, IEnumerable<double> historicalCpi, double withdrawalRate)
             : base(historicalReturns)
         {
-            HistoricalCpi = historicalCpi;
+            HistoricalCpi = historicalCpi.ToList();
             WithdrawalRate = withdrawalRate;
         }
 

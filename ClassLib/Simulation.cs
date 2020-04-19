@@ -26,9 +26,14 @@ namespace ClassLib
             {
                 var payment = CalculatePayment();
 
-                HistoricalWithdrawalAmount.Add(payment);
+                if (currentSavings == 0)
+                    HistoricalWithdrawalAmount.Add(0);
+                else
+                    HistoricalWithdrawalAmount.Add(payment);
 
-                currentSavings -= payment;
+                var newSavings = currentSavings - payment;
+
+                currentSavings = newSavings < 0 ? 0 : newSavings;
 
                 currentSavings *= (1 + currentYearReturn);
 

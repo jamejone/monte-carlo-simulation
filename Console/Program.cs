@@ -10,8 +10,11 @@ namespace Console
             //var comparisonSim = new ComparisonSim();
             //comparisonSim.Run();
 
-            var dynamicSwrMonteCarlo = new DynamicSwrMonteCarlo();
-            dynamicSwrMonteCarlo.Run();
+            //var dynamicSwrMonteCarlo = new DynamicSwrMonteCarlo();
+            //dynamicSwrMonteCarlo.Run();
+
+            var fourPercentMonteCarlo = new FourPercentSwrMonteCarlo();
+            fourPercentMonteCarlo.Run();
         }
     }
 }
