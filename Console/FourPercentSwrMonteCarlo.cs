@@ -197,7 +197,7 @@ namespace Console
 
         private static readonly double StartingAmount = 1500000;
 
-        private static readonly int RetirementAge = 40;
+        private static readonly int RetirementAge = 50;
 
         private static readonly int DeathAge = 90;
 
@@ -221,16 +221,26 @@ namespace Console
                 simList.Add(staticSwrSim);
             }
 
-            System.Console.WriteLine("HistoricalAccountBalance");
+            System.Console.WriteLine("HistoricalAccountBalance:");
             foreach (var sim in simList)
             {
                 System.Console.WriteLine(String.Join(',', sim.HistoricalAccountBalance));
             }
 
-            System.Console.WriteLine("HistoricalWithdrawalAmount");
+            System.Console.WriteLine("HistoricalWithdrawalAmount:");
             foreach (var sim in simList)
             {
                 System.Console.WriteLine(String.Join(',', sim.HistoricalWithdrawalAmount));
+            }
+
+            System.Console.WriteLine("Num payments left:");
+            foreach (var sim in simList)
+            {
+                var lastPayment = sim.HistoricalWithdrawalAmount.Last();
+
+                var finalBalance = sim.HistoricalAccountBalance.Last();
+
+                System.Console.WriteLine(finalBalance / lastPayment);
             }
         }
     }
